@@ -19,23 +19,28 @@ A página web contém uma tabela onde o usuário seleciona os códigos DDD de or
 * main.py: este arquivo define uma aplicacao FastAPI, para isso usa dois endpoints:
 o endpoint “/” retorna a página inicial da aplicação e o endpoint “/tarifas” calcula a tarifa para diferentes planos com base nos dados digitado pelo usuário na tabela. 
 
-* Requirements.txt: este arquivo contém as bibliotecas e versoes utilizadas na aplicação
-
-* index.html: este arquivo contém o código HTML e JavaScript da página web que exibe a tabela
-
 * Tarifas.py : este arquivo contem uma classe que representa as tarifas para diferentes planos. Essa classe é útil para armazenar as tarifas, permitindo que outras partes do código possam acessar esses valores.
 
 * DDEnum.py : este arquivo contem uma classe que representa os DDD permitidos na aplicação. O uso de um Enum ajuda a evitar erros de digitação ou uso indevido de valores não permitidos
 
 * tarifas.py : este arquivo contem uma série de funções para calcular as tarifas de uma ligação . O cálculo das tarifas é feito a partir de um arquivo CSV de planos que contém as informações de origem, destino e preço da ligação
 
-* tests.py  O arquivo contém uma classe de teste que utiliza a biblioteca unittest para verificar se as funções do arquivo tarifas.py estão retornando os valores corretos. O objetivo desses testes é garantir que as funções estão funcionando corretamente e retornando os valores esperados. 
+* index.html: este arquivo contém o código HTML e JavaScript da página web que exibe a tabela
+
+* tests.py : O arquivo contém uma classe de teste que utiliza a biblioteca unittest para verificar se as funções do arquivo tarifas.py estão retornando os valores corretos. O objetivo desses testes é garantir que as funções estão funcionando corretamente e retornando os valores esperados. 
+* Requirements.txt: este arquivo contém as bibliotecas e versoes utilizadas na aplicação
 
 ## Para rodar o projeto
 
 * Certifique-se de que o Python está instalado no seu computador
-* Clone o repositório
-* Abra o terminal e navegue até a pasta do projeto
+* Clone o repositório : git clone https://github.com/Micaelly2222/calculadora_tarifas.git 
+* Abra o terminal e navegue até a pasta do projeto : cd calculadora_tarifas
 * Para rodar o servidor, execute o comando uvicorn main:app --reload no terminal
 * Você poderá acessar a aplicação em seu navegador digitando http://localhost:8000 na barra de endereço
 * Para executar os testes, execute o comando python tests.py no terminal
+
+## Tela da Aplicação Finalizada
+
+![image](https://user-images.githubusercontent.com/96353855/221429455-2d09b7d4-beb6-4df2-8ee3-7132b4604046.png)
+
+
