@@ -31,4 +31,11 @@ o endpoint “/” retorna a página inicial da aplicação e o endpoint “/tar
 
 * tests.py  O arquivo contém uma classe de teste que utiliza a biblioteca unittest para verificar se as funções do arquivo tarifas.py estão retornando os valores corretos. O objetivo desses testes é garantir que as funções estão funcionando corretamente e retornando os valores esperados. 
 
-* Em resumo, o código fornece uma pagina da web que permite aos usuários calcular tarifas de ligaçoes com base em diferentes planos. 
+## Para rodar o projeto
+
+* Certifique-se de que o Python está instalado no seu computador
+* Clone o repositório
+* Abra o terminal e navegue até a pasta do projeto
+* Para rodar o servidor, execute o comando uvicorn main:app --reload no terminal
+* Você poderá acessar a aplicação em seu navegador digitando http://localhost:8000 na barra de endereço
+* Para executar os testes, execute o comando python tests.py no terminal
