@@ -1,0 +1,164 @@
+<!-- 1. Usar uma combo para botar a origem e destino -->
+
+<html>
+  <head>
+    <style>
+      td,
+th {
+    border: 1px solid rgb(190, 190, 190);
+    padding: 10px;
+}
+
+td {
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #eee;
+}
+
+th[scope='col'] {
+    background-color: #696969;
+    color: #fff;
+}
+
+th[scope='row'] {
+    background-color: #d7d9f2;
+}
+
+caption {
+    padding: 10px;
+    caption-side: bottom;
+}
+
+table {
+    border-collapse: collapse;
+    border: 2px solid rgb(200, 200, 200);
+    letter-spacing: 1px;
+    font-family: sans-serif;
+    font-size: 0.8rem;
+}
+
+    </style>
+    <title>Q.uinino - Calculadora de Planos</title>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <h1>Q.uinino - Calculadora de Planos</h1>
+
+
+<label for="origem">Origem:</label>
+<select id="origem" name="origem">
+  <option value="011">011</option>
+  <option value="016">016</option>
+  <option value="017">017</option>
+  <option value="018">018</option>
+</select>
+
+<label for="destino">Destino:</label>
+<select id="destino" name="destino">
+  <option value="011">011</option>
+  <option value="016">016</option>
+  <option value="017">017</option>
+  <option value="018">018</option>
+</select>
+
+<!-- 2. Usar um input de number com mínimo de 0 para o tempo -->
+
+<label for="tempo">Tempo:</label>
+<input type="number" id="tempo" name="tempo" min="0" value="0">
+
+
+<!-- 3. Adicionar o botão com um callback e Alterar o callback para ser o xmlhttprequest : -->
+
+
+
+<button onclick="BuscarDados()">Enviar</button>
+
+<table>
+  <tr>
+    <th scope="row">Origem</th>
+    <th scope="row">Destino</th>
+    <th scope="row">Tempo</th>
+    <th scope="row">Sem Plano</th>
+    <th scope="row">Fale Mais 30</th>
+    <th scope="row">Fale Mais 60</th>
+    <th scope="row">Fale Mais 120</th>
+  </tr>
+  <tr>
+    <td id="origem-table">-</td>
+    <td id="destino-table">-</td>
+    <td id="tempo-table">-</td>
+    <td id="sem-plano-table">-</td>
+    <td id="fale-mais-30-table">-</td>
+    <td id="fale-mais-60-table">-</td>
+    <td id="fale-mais-120-table">-</td>
+  </tr>
+  </table>
+
+<script>
+
+// 4. Usando getElementById pra pegar os elementos :
+
+const p_origem = document.getElementById('origem');
+const p_destino = document.getElementById('destino');
+const p_tempo = document.getElementById('tempo');
+
+const p_origem_table = document.getElementById('origem-table');
+const p_destino_table = document.getElementById('destino-table');
+const p_tempo_table = document.getElementById('tempo-table');
+const p_sem_plano_table = document.getElementById('sem-plano-table');
+const p_fale_mais_30_table = document.getElementById('fale-mais-30-table');
+const p_fale_mais_60_table = document.getElementById('fale-mais-60-table');
+const p_fale_mais_120_table = document.getElementById('fale-mais-120-table');
+
+
+function BuscarDados() {
+  const origem = p_origem.value;
+  const destino = p_destino.value;
+  const tempo = p_tempo.value;
+
+  if (origem === destino) {
+    alert("Erro: a origem e o destino não podem ser iguais.");
+    return;
+  }
+
+  console.log(`Origem: ${origem}, Destino: ${destino}, Tempo: ${tempo}`);
+
+// 5. Ler o JSON e Criar a requisição XMLHttpRequest
+
+  const request = new XMLHttpRequest();
+  request.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      const response = JSON.parse(this.responseText);
+      console.log(response);
+      p_origem_table.innerHTML = origem
+      p_destino_table.innerHTML  = destino
+      p_tempo_table.innerHTML  = tempo
+      p_sem_plano_table.innerHTML  = format_real(response.sem_plano)
+      p_fale_mais_30_table.innerHTML  = format_real(response.FaleMais30)
+      p_fale_mais_60_table.innerHTML  = format_real(response.FaleMais60)
+      p_fale_mais_120_table.innerHTML  = format_real(response.FaleMais120)
+
+
+    }
+  };
+
+  request.open("GET", `/tarifas?origem=${origem}&destino=${destino}&tempo=${tempo}`, true);
+  request.send();
+  console.log("send");
+}
+
+function format_real(value){
+  return value.toLocaleString('pt-BR', {
+		style: 'currency',
+		currency: 'BRL'
+	});
+}
+
+
+
+
+</script>
+</body>
+</html>
