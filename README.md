@@ -1,4 +1,8 @@
-## Calculadora de Tarifas
+# Calculadora de Tarifas
+
+## Visão Geral
+
+Este projeto consiste em uma aplicação web que permite aos usuários calcular tarifas para ligações usando diferentes planos. A página web contém uma tabela onde o usuário seleciona os códigos DDD de origem e destino e a duração da chamada. Após clicar no botão "Calcular", o código JavaScript recupera os dados da tabela, envia-os ao servidor por meio de uma requisição XMLHttpRequest e exibe os resultados na página da web.
 
 ## Linguagens e Ferramentas Utilizadas
 
@@ -9,12 +13,17 @@
 * [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML/) , linguagem de marcação usada para criar páginas da web
 * [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/), linguagem usada para criar interatividade em páginas da web
 * [Jinja](https://jinja.palletsprojects.com/en/3.1.x/), biblioteca Python de template que torna mais fácil criar templates dinâmicos para gerar conteúdo HTML
-* [Unittest](https://docs.python.org/3/library/unittest.html/), framework de testes unitários em Python 
+* [Unittest](https://docs.python.org/3/library/unittest.html/), framework de testes unitários em Python
 
-## Objetivo do Projeto
+## Requisitos Mínimos de Instalação
+Para executar este projeto em sua máquina, certifique-se de ter os seguintes requisitos mínimos instalados:
 
-* O objetivo desse projeto foi de servir uma página da web para calcular a tarifa de ligações usando diferentes planos. 
-A página web contém uma tabela onde o usuário seleciona os códigos DDD de origem e destino e o tempo da chamada. Depois de clicar no botão "Enviar", o código JavaScript recupera os dados da tabela, envia-os ao servidor usando um XMLHttpRequest e exibe os resultados na página da web. Aqui está um detalhamento dos arquivos:
+* Python (versão 3.6 ou superior)
+* pip install pandas
+* pip install fastapi
+* pip install pydantic
+
+## Estrutura do projeto
 
 * main.py: este arquivo define uma aplicacao FastAPI, para isso usa dois endpoints:
 o endpoint “/” retorna a página inicial da aplicação e o endpoint “/tarifas” calcula a tarifa para diferentes planos com base nos dados digitado pelo usuário na tabela. 
@@ -30,7 +39,7 @@ o endpoint “/” retorna a página inicial da aplicação e o endpoint “/tar
 * tests.py : O arquivo contém uma classe de teste que utiliza a biblioteca unittest para verificar se as funções do arquivo tarifas.py estão retornando os valores corretos. O objetivo desses testes é garantir que as funções estão funcionando corretamente e retornando os valores esperados. 
 * Requirements.txt: este arquivo contém as bibliotecas e versoes utilizadas na aplicação
 
-## Para rodar o projeto
+## Como executar o projeto
 
 * Certifique-se de que o Python está instalado no seu computador
 * Clone o repositório : git clone https://github.com/Micaelly2222/calculadora_tarifas.git 
